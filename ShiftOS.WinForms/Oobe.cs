@@ -37,19 +37,39 @@ using ShiftOS.Engine;
 using ShiftOS.Objects;
 using ShiftOS.Objects.ShiftFS;
 
+/// <summary>
+/// Oobe.
+/// </summary>
 namespace ShiftOS.WinForms
 {
+	/// <summary>
+	/// Oobe.
+	/// </summary>
     public partial class Oobe : Form, IOobe
     {
+		/// <summary>
+		/// Gets my save.
+		/// </summary>
+		/// <value>My save.</value>
         public Save MySave { get; private set; }
 
+		/// <summary>
+		/// The is transfer mode.
+		/// </summary>
         public bool IsTransferMode = false;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ShiftOS.WinForms.Oobe"/> class.
+		/// </summary>
         public Oobe()
         {
             InitializeComponent();
         }
 
+		/// <summary>
+		/// Hides all.
+		/// </summary>
+		/// <returns>The all.</returns>
         public void HideAll()
         {
             foreach (Control ctrl in this.Controls)
@@ -61,6 +81,9 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Setups the UI.
+		/// </summary>
         public void SetupUI()
         {
             HideAll();
@@ -116,8 +139,14 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// The transfer progress.
+		/// </summary>
         private int TransferProgress = 0;
 
+		/// <summary>
+		/// Setups the terminal.
+		/// </summary>
         public void SetupTerminal()
         {
             //just so that the terminal can access our save
@@ -147,6 +176,10 @@ namespace ShiftOS.WinForms
 
         }
 
+		/// <summary>
+		/// Gets or sets the things done.
+		/// </summary>
+		/// <value>The things done.</value>
         public int thingsDone
         {
             get
@@ -162,6 +195,10 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Gets or sets the things to do.
+		/// </summary>
+		/// <value>The things to do.</value>
         public int thingsToDo
         {
             get
@@ -177,6 +214,10 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Starts the install.
+		/// </summary>
+		/// <returns>The install.</returns>
         public void StartInstall()
         {
             Dictionary<string, string> Aliases = new Dictionary<string, string>();
@@ -214,6 +255,10 @@ namespace ShiftOS.WinForms
             SaveSystem.SaveGame();
         }
 
+		/// <summary>
+		/// Gets the supported langs.
+		/// </summary>
+		/// <value>The supported langs.</value>
         List<string> supportedLangs
         {
             get
@@ -224,6 +269,10 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Setups the languages.
+		/// </summary>
+		/// <returns>The languages.</returns>
         public void SetupLanguages()
         {
             lblanguage.Items.Clear();
@@ -234,6 +283,10 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Setups all controls.
+		/// </summary>
+		/// <returns>The all controls.</returns>
         public void SetupAllControls()
         {
             foreach (Control ctrl in this.Controls)
@@ -242,6 +295,11 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Setups the control.
+		/// </summary>
+		/// <returns>The control.</returns>
+		/// <param name="ctrl">Ctrl.</param>
         public void SetupControl(Control ctrl)
         {
             if (!string.IsNullOrWhiteSpace(ctrl.Text))
@@ -259,6 +317,12 @@ namespace ShiftOS.WinForms
 
         }
 
+		/// <summary>
+		/// Btnselectlangs the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void btnselectlang_Click(object sender, EventArgs e)
         {
             if (lblanguage.SelectedItem != null)
@@ -270,6 +334,12 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Btnsetuserinfos the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void btnsetuserinfo_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtusername.Text))
@@ -286,6 +356,12 @@ namespace ShiftOS.WinForms
             }
         }
 
+		/// <summary>
+		/// Button1s the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtdiscoursename.Text))
@@ -297,6 +373,11 @@ namespace ShiftOS.WinForms
             SetupUI();
         }
 
+		/// <summary>
+		/// Starts the showing.
+		/// </summary>
+		/// <returns>The showing.</returns>
+		/// <param name="save">Save.</param>
         public void StartShowing(Save save)
         {
             IsTransferMode = false;
@@ -323,6 +404,11 @@ namespace ShiftOS.WinForms
             this.Show();
         }
 
+		/// <summary>
+		/// Shows the save transfer.
+		/// </summary>
+		/// <returns>The save transfer.</returns>
+		/// <param name="save">Save.</param>
         public void ShowSaveTransfer(Save save)
         {
             MySave = save;
@@ -360,6 +446,12 @@ namespace ShiftOS.WinForms
             SetupUI();
         }
 
+		/// <summary>
+		/// Button2s the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void button2_Click(object sender, EventArgs e)
         {
             pnlreenteruserinfo.Hide();
@@ -372,17 +464,33 @@ namespace ShiftOS.WinForms
             MySave.Password = txtrpass.Text;
         }
 
+		/// <summary>
+		/// Button3s the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void button3_Click(object sender, EventArgs e)
         {
             TransferProgress = 0;
             SetupUI();
         }
 
+		/// <summary>
+		/// Button4s the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void button4_Click(object sender, EventArgs e)
         {
             ServerManager.SendMessage("mud_save", JsonConvert.SerializeObject(MySave));
         }
 
+		/// <summary>
+		/// Prompts for login.
+		/// </summary>
+		/// <returns>The for login.</returns>
         public void PromptForLogin()
         {
             ServerManager.MessageReceived += (msg) =>
@@ -414,12 +522,24 @@ namespace ShiftOS.WinForms
             SetupUI();
         }
 
+		/// <summary>
+		/// Button6s the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void button6_Click(object sender, EventArgs e)
         {
             TransferProgress = 4;
             SetupUI();
         }
 
+		/// <summary>
+		/// Button5s the click.
+		/// </summary>
+		/// <returns>The click.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void button5_Click(object sender, EventArgs e)
         {
             ServerManager.SendMessage("mud_checkuserexists", $@"{{
@@ -428,6 +548,12 @@ namespace ShiftOS.WinForms
 }}");
         }
 
+		/// <summary>
+		/// Oobes the load.
+		/// </summary>
+		/// <returns>The load.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
         private void Oobe_Load(object sender, EventArgs e)
         {
 
