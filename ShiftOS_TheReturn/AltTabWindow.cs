@@ -22,32 +22,34 @@
  * SOFTWARE.
  */
 
+using Discoursistency.HTTP.Client;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Discoursistency.HTTP.Client.Models;
 
-namespace ShiftOS.Engine {
-    public partial class AltTabWindow : Form {
-        public AltTabWindow() {
-            InitializeComponent();
-        }
-
-        internal void CycleBack() {
-            Console.WriteLine("Cycle Backwards");
-        }
-
-        internal void CycleForwards() {
-            Console.WriteLine("Cycle Forwards");
-        }
-
-        private void AltTabWindow_Load(object sender, EventArgs e) {
-
+/// <summary>
+/// Shift OS auth agent.
+/// </summary>
+namespace ShiftOS.Objects
+{
+	/// <summary>
+	/// Shift OS auth agent.
+	/// </summary>
+    public class ShiftOSAuthAgent : Discoursistency.Base.Authentication.DiscourseAuthenticationService
+    {
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ShiftOS.Objects.ShiftOSAuthAgent"/> class.
+		/// </summary>
+		/// <param name="client">Client.</param>
+        public ShiftOSAuthAgent(IClient client) : base(client)
+        {
+			// TODO: Fill this out
         }
     }
+
 }
+
+// Comments by @carverh
