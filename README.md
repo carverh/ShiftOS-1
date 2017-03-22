@@ -19,3 +19,5 @@ You may use the ShiftOS.Engine, ShiftOS.Objects, and ShiftOS.Server projects to 
 ## Contributing
 
 See `CONTRIBUTING.md`
+
+michael is still a cuck
